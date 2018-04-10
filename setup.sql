@@ -1,6 +1,7 @@
 create database if not exists FitnessForGeeks;
 use FitnessForGeeks;
-create table if not exists users(
+drop table users;
+create table accounts(
   id int not null primary key auto_increment,
   username varchar(20) not null unique,
   password varchar(64) not null,
@@ -11,6 +12,6 @@ create table if not exists users(
   weight decimal(5, 2),
   height int(3),
   bmi decimal (3, 1),
-  verification_status enum("verified", "not verified"),
+  isVerified boolean not null default false,
   description varchar(255)
 );
