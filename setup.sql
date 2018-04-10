@@ -1,6 +1,6 @@
 create database if not exists FitnessForGeeks;
 use FitnessForGeeks;
-drop table users;
+drop table accounts;
 create table accounts(
   id int not null primary key auto_increment,
   username varchar(20) not null unique,
