@@ -1,12 +1,5 @@
 create database if not exists FitnessForGeeks;
 use FitnessForGeeks;
-drop table if exists accounts cascade;
-drop table if exists sessions;
-create table sessions(
-  id int(10) not null primary key auto_increment,
-  sessionKey varchar(64) unique not null,
-  connections int(2)
-);
 create table accounts(
   id int(10) not null primary key auto_increment,
   username varchar(20) not null unique,
@@ -19,7 +12,6 @@ create table accounts(
   height int(3),
   bmi decimal (3, 1),
   isVerified boolean not null default false,
-  sessionId int(10),
-  description varchar(255),
-  foreign key(sessionId) references sessions(id)
+  authKey varchar(64) not null unique,
+  description varchar(255)
 );
