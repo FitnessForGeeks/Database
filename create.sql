@@ -47,3 +47,36 @@ create table reviews(
     rating double(3, 2) not null check(rating >= 0 and rating <= 5),
     createdAt timestamp not null
 );
+
+delimiter $$
+create function insertReview(
+	accountId int(10),
+    recipeId int(10),
+    text text,
+    rating double(3, 2)
+)
+returns int(10)
+deterministic
+begin
+	declare id int(10) default -1;
+	insert into reviews(
+		accountId,
+		recipeId,
+		text,
+		rating,
+		createdAt
+	)
+	values(
+		accountId,
+		recipeId,
+		text,
+		rating,
+		current_timestamp()
+	);
+    set id = last_insert_id();
+    update recipes
+	set avgRating = ((avgRating * reviewCount) + rating)/(reviewCount + 1), reviewCount = reviewCount + 1
+	where recipes.id = recipeId;
+    return id;
+end $$
+delimiter ;

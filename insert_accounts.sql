@@ -12,7 +12,6 @@ insert into accounts(
     height,
     isVerified,
     authKey,
-    image,
     description,
     createdAt
 ) 
@@ -28,7 +27,6 @@ values (
     182,
     true,
     'testKey',
-    null,
     'Hello my name is Tim Untersberger and I love to cook and create my own little recipes. :)',
     current_timestamp()
 );
@@ -45,7 +43,6 @@ insert into accounts(
     height,
     isVerified,
     authKey,
-    image,
     description,
     createdAt
 )
@@ -61,7 +58,6 @@ values (
     186,
     false,
     'testKey2',
-    null,
     'Hello my name Stefan Waldl and I love rugby.',
     current_timestamp()
 );
