@@ -21,7 +21,7 @@ CREATE TABLE accounts (
 CREATE TABLE eatenRecipes (
     id INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     accountId INT(10) NOT NULL REFERENCES accounts (id),
-    date DATE NOT NULL,
+    date date NOT NULL,
     recipeId INT(10) NOT NULL
 );
 
@@ -38,6 +38,7 @@ CREATE TABLE recipes (
     createdAt timestamp,
     avgRating double(3, 2) default 0
 );
+
 
 create table reviews(
 	id INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
